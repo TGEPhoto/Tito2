@@ -14,4 +14,8 @@ class Mod(commands.Cog):
         """
         await ctx.channel.purge(limit=amount)
 
-    
+        if message.content.startswith('$dobro jutro'):
+                await message.channel.send('LUPA TI GLAVA OD MOTORA')
+
+def setup(client):
+    client.add_cog(Mod(client))
