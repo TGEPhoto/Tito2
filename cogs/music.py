@@ -24,14 +24,14 @@ class music(commands.Cog):
 
     @tasks.loop()
     async def playLoop(self):
-        if self.client.get_guild(725991701469986876).voice_client == None:
-            await self.client.get_channel(794155646882545704).connect()
-	    pjesma = random.choice(self.l)
+        if self.client.get_guild(776167646424727574).voice_client == None:
+            await self.client.get_channel(776167646424727579).connect()
+            pjesma = random.choice(self.l)
         if not pjesma in self.l1: 
-            self.l1.append(pjesme)
+            self.l1.append(pjesma)
             self.l1.sort()
             await self.client.change_presence(activity=discord.Game(pjesma[:-4]))
-            self.client.get_guild(725991701469986876).voice_client.play(discord.FFmpegPCMAudio('./exyuPjesme/' + pjesma))
+            self.client.get_guild(776167646424727574).voice_client.play(discord.FFmpegPCMAudio('./exyuPjesme/' + pjesma))
             await asyncio.sleep(MP3('./exyuPjesme/' + pjesma).info.length + 3)
         if self.l1 == self.l:
             self.l1.clear()
@@ -63,7 +63,7 @@ class music(commands.Cog):
             if ctx.voice_client == None:
                 await channel.connect()
             else:
-                self.client.get_guild(725991701469986876).voice_client.stop()
+                self.client.get_guild(776167646424727574).voice_client.stop()
                 self.playLoop.cancel()
                 await ctx.voice_client.move_to(channel)
             if not self.playAzra.is_running():
@@ -76,15 +76,15 @@ class music(commands.Cog):
             self.azra_l.append(pjesma)
             self.azra_l.sort()
             await self.client.change_presence(activity=discord.Game((pjesma)[:-4]))
-            self.client.get_guild(725991701469986876).voice_client.play(discord.FFmpegPCMAudio('./exyuPjesme/' + pjesma))
-            await asyncio.sleep(MP3('.exyuPjesme/' + pjesma).info.length + 3)
+            self.client.get_guild(776167646424727574).voice_client.play(discord.FFmpegPCMAudio('./exyuPjesme/' + pjesma))
+            await asyncio.sleep(MP3('./exyuPjesme/' + pjesma).info.length + 3)
         if self.azra_l == self.azraPjesme:
             self.azra_l.clear()
 
     @commands.command(aliases=['заустави'])
     async def zaustavi(self, ctx, *arg):
         if (arg[0].lower().strip() == 'azra' or arg[0].lower().strip() == 'азра') and self.playAzra.is_running():
-            self.client.get_guild(725991701469986876).voice_client.stop()
+            self.client.get_guild(776167646424727574).voice_client.stop()
             self.playAzra.cancel()
         if not self.playLoop.is_running():
             self.playLoop.start()
