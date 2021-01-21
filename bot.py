@@ -9,7 +9,12 @@ from mutagen.mp3 import MP3
 import datetime
 
 client = commands.Bot(command_prefix='-', case_insensitive=True)
-		
+
+@client.event
+async def on_ready():
+	print('Тито спреман да буде педер и даље')
+
+
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
