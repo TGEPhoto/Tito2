@@ -26,7 +26,7 @@ class music(commands.Cog):
     async def playLoop(self):
         if self.client.get_guild(776167646424727574).voice_client == None:
             await self.client.get_channel(776167646424727579).connect()
-            pjesma = random.choice(self.l)
+        pjesma = random.choice(self.l)
         if not pjesma in self.l1: 
             self.l1.append(pjesma)
             self.l1.sort()
